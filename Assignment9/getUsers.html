@@ -1,19 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Get users</title>
     <script src="getUsers.js"></script>
 </head>
-<body onload="getUsers()">
-    <h1>User List</h1>    
-    <table id="userTable">
-        <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Username</th>
-        </tr>
-    </table>
+<style>
+    *{
+        font-size: 20px;
+    }
+    table,
+    th,
+    td {
+        border: 1px solid;
+    }
+
+    table {
+        border-collapse: collapse;
+        margin-bottom: 8px;
+    }
+    th,td{
+        padding: 10px;
+    }
+    #head{
+        font-weight: bold
+    }
+    button{
+        margin: 8px 0px;
+    }
+</style>
+
+<body onload={getUsers()}>
+    <h1>User List</h1>
+    <div id="table"></div>
+    <button id = "sortButton" onclick={sortByName()}>Sort</button>
+    <div>
+        <input id="filter" name="filter" type="text" placeholder="Search"/>
+        <button id="searchButton" onclick={search()}>Search</button>
+        <button id="getAllUsersButton" onclick={getAllUsers()}>Get All Users</button>
+    </div>
 </body>
+
 </html>
