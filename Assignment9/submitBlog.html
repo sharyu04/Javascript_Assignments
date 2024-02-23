@@ -11,16 +11,16 @@
     <form id="form">
         <h1>Enter blog details</h1>
         <label for="title" class="label">Title</label>
-        <input name="title" id="title" class="input" type="text" />
+        <input name="title" id="title" class="input" type="text" value="title"/>
 
         <label for="content" class="label">Blog content</label>
-        <input name="content" id="content" class="input" type="textArea" />
+        <input name="content" id="content" class="input" type="textArea" value="content"/>
 
         <label for="author" class="label">Author</label>
-        <input name="author" id="author" class="input" type="text" />
+        <input name="author" id="author" class="input" type="text" value="author"/>
 
         <label for="email" class="label">Email</label>
-        <input name="email" id="email" class="input" type="email" />
+        <input name="email" id="email" class="input" type="email" value="email"/>
 
         <button type="submit">Submit</button>
     </form>
@@ -31,10 +31,10 @@
         let submitBlog = async (event) => {
             event.preventDefault();
 
-            let title = document.getElementById("title").innerText
-            let content = document.getElementById("content").innerText
-            let author = document.getElementById("author").innerText
-            let email = document.getElementById("email").innerText
+            let title = document.getElementById("title").value
+            let content = document.getElementById("content").value
+            let author = document.getElementById("author").value
+            let email = document.getElementById("email").value
 
             console.log (title,content,author,email)
 
