@@ -1,0 +1,75 @@
+//3.
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit blog website</title>
+</head>
+
+<body>
+    <form id="form">
+        <h1>Enter blog details</h1>
+        <label for="title" class="label">Title</label>
+        <input name="title" id="title" class="input" type="text" value="title"/>
+
+        <label for="content" class="label">Blog content</label>
+        <input name="content" id="content" class="input" type="textArea" value="content"/>
+
+        <label for="author" class="label">Author</label>
+        <input name="author" id="author" class="input" type="text" value="author"/>
+
+        <label for="email" class="label">Email</label>
+        <input name="email" id="email" class="input" type="email" value="email"/>
+
+        <button type="submit">Submit</button>
+    </form>
+
+
+    <script>
+
+        let submitBlog = async (event) => {
+            event.preventDefault();
+
+            let title = document.getElementById("title").value
+            let content = document.getElementById("content").value
+            let author = document.getElementById("author").value
+            let email = document.getElementById("email").value
+
+            console.log (title,content,author,email)
+
+            if (title.length !== 0 && content.length !== 0 && author.length !== 0 && email.length !== 0) {
+
+
+                fetch("https://reqres.in", {
+                    method: "POST",
+                    body: JSON.stringify({
+                        title: title,
+                        content: content,
+                        author: author,
+                        email: email
+                    }),
+                    headers: {
+                        "Content-type": "application/json"
+                    }
+                }).then(res => {
+                    console.log(res.json())
+                }).catch(err => {
+                    console.log("Error")
+                }).finally(() => {
+                    document.getElementById("form").innerHTML = `<h1>Form submitted successfully!</h1>`
+                })
+            }
+
+            else {
+                console.log("Incorrect input")
+            }
+        }
+
+        document.getElementById("form").addEventListener("submit", submitBlog);
+    </script>
+</body>
+
+</html>
